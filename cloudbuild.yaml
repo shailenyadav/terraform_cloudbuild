@@ -1,0 +1,24 @@
+#Cloudbuild
+steps:
+- name: bash
+  script: |
+    #!/usr/bin/env bash
+
+    echo "-==Change the working directory ==-"
+    cd  terraform/
+
+    wget -cO - https://releases.hashicorp.com/terraform/1.6.0-alpha20230719/terraform_1.6.0-alpha20230719_linux_amd64.zip > terraform.zip
+    unzip terraform.zip
+    ./terraform --version
+
+    echo "-== INIT TF ==-"
+    ./terraform init -reconfigure \
+    && ./terraform plan -no-color -out=./tfplan -lock=true \
+    && ./terraform apply -no-color -auto-approve
+
+  # && ./terraform destroy -no-color -auto-approve
+
+  env:
+  - 'CLOUDSDK_CORE_PROJECT=redcap-394116'
+options:
+  logging: CLOUD_LOGGING_ONLY
