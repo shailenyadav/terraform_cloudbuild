@@ -13,12 +13,9 @@ steps:
 
     echo "-== INIT TF ==-"
     ./terraform init -reconfigure \
-    && ./terraform plan -no-color -out=./tfplan -lock=true \
-    && ./terraform apply -no-color -auto-approve
+  # && ./terraform plan -no-color -out=./tfplan -lock=true \
+  # && ./terraform apply -no-color -auto-approve
+    && ./terraform destroy -no-color -auto-approve
 
-  # && ./terraform destroy -no-color -auto-approve
-
-  # env:
-  # - 'CLOUDSDK_CORE_PROJECT=nc-ev-test'
 options:
   logging: CLOUD_LOGGING_ONLY
