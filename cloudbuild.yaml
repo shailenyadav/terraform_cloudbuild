@@ -13,9 +13,9 @@ steps:
 
     echo "-== INIT TF ==-"
     ./terraform init -reconfigure \
+    && ./terraform destroy -no-color -auto-approve
   # && ./terraform plan -no-color -out=./tfplan -lock=true \
   # && ./terraform apply -no-color -auto-approve
-    && ./terraform destroy -no-color -auto-approve
 
 options:
   logging: CLOUD_LOGGING_ONLY
