@@ -18,7 +18,7 @@ steps:
 
   # && ./terraform destroy -no-color -auto-approve
 
-  env:
-  - 'CLOUDSDK_CORE_PROJECT=nc-ev-test'
+  # env:
+  # - 'CLOUDSDK_CORE_PROJECT=nc-ev-test'
 options:
   logging: CLOUD_LOGGING_ONLY
